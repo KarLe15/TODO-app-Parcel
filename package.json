@@ -1,0 +1,23 @@
+{
+    "dependencies": {
+      "parcel-bundler": "^1.12.4"
+    },
+    "name": "config-parcel",
+    "version": "1.0.0",
+    "main": "index.js",
+    "devDependencies": {
+      "@babel/core": "^7.6.4",
+      "sass": "^1.23.0",
+      "typescript": "^3.6.4"
+    },
+    "scripts": {
+      "dev": "parcel pages/index.html",
+      "build": "parcel build pages/index.html",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
+  }
+  

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../assets/scss/_base.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA","file":"main.2ce8bad8.css","sourceRoot":"../pages","sourcesContent":["\n\n*, *::after, *::before {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}"]}
