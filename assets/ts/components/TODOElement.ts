@@ -18,7 +18,7 @@ class TODOElement implements IComponent{
     private _color : Color;
     private _deadline : Date; // TODO :: maybe modify the type with momentJS or something like that
 
-    public constructor(content="", title="", deadLine? : Date){
+    public constructor(title="", content="", deadLine? : Date){
         this._content  = content;
         this._title    = title;
         this._deadline = (deadLine !== undefined) ? deadLine : getDefaultDeadLine();

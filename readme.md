@@ -15,3 +15,27 @@
 <ul>
     <li>Connexion</li>
 </ul>
+
+
+<hr>
+<h3>TODOS</h3>
+<ul>
+    <li> Make a model of the site on Figma</li>
+    <li> Integrate the maquette with SCSS</li>
+    <li> Add categories</li>
+    <li> Adding a test library like Jest or mocha</li>
+    <li> Adding some test with all methods of TODO ELEMENT</li>
+    <li> Answer the issue in the repository about the DB this project should use</li>
+    <li> Answer the issue in the repository about the back-end language to Use</li>
+    <li> Make an architecture for the back-end</li>
+    <li> Review the code and complete all TODOS</li>
+    <li> Make a documentation and comment all the code</li>
+</ul>
+
+<hr>
+<h3>Links</h3>
+<ul>
+    <li> Figma link : https://www.figma.com/file/7yUQknPcZSBbpzjkz5kDyb/TODO-App</li>
+</ul>
+
+

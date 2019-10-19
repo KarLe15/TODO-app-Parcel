@@ -193,7 +193,7 @@ var enums_1 = require("./enums");
 
 
 function getDefaultDeadLine() {
-  return new Date();
+  return addDay(new Date());
 }
 
 exports.getDefaultDeadLine = getDefaultDeadLine;
@@ -233,6 +233,14 @@ function isValideDate(tDate) {
 }
 
 exports.isValideDate = isValideDate;
+
+function addDay(tDate) {
+  // return new Date(tDate.getTime() + (1000 * 60 * 60 * 24)); // Version 2;
+  tDate.setDate(tDate.getDate() + 1);
+  return tDate;
+}
+
+exports.addDay = addDay;
 },{"./enums":"../assets/ts/utils/enums.ts"}],"../assets/ts/components/TODOElement.ts":[function(require,module,exports) {
 "use strict";
 
@@ -256,13 +264,13 @@ var functions_1 = require("../utils/functions");
 var TODOElement =
 /** @class */
 function () {
-  function TODOElement(content, title, deadLine) {
-    if (content === void 0) {
-      content = "";
-    }
-
+  function TODOElement(title, content, deadLine) {
     if (title === void 0) {
       title = "";
+    }
+
+    if (content === void 0) {
+      content = "";
     }
 
     this._content = content;
@@ -361,11 +369,22 @@ Object.defineProperty(exports, "__esModule", {
 
 var TODOElement_1 = __importDefault(require("./components/TODOElement"));
 
-(function () {
-  console.log("Ca marche");
-  var todo = new TODOElement_1["default"]();
-  console.log(todo);
-})();
+function submitTodo() {
+  //* Getting title and content from inputs
+  var todoTitle = document.getElementById("todo_title").value;
+  var todoContent = document.getElementById("todo_content").value; //* Construct the TODO ELEMENT 
+
+  var todoElem = new TODOElement_1["default"](todoTitle, todoContent);
+  console.log(todoElem); //* IF the Element cannot be created send Error in the console
+  //* Getting the HTML code for that TODO ELEMENT
+}
+
+var buttonSubmit = document.getElementById("soumettre_todo");
+buttonSubmit.addEventListener("click", submitTodo);
+/**
+ * TODO :: Adding a test library like Jest or mocha
+ * TODO :: Adding some test with all methods of TODO ELEMENT
+ */
 },{"./components/TODOElement":"../assets/ts/components/TODOElement.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
