@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../assets/ts/enums.ts":[function(require,module,exports) {
+})({"../assets/ts/utils/enums.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -130,23 +130,213 @@ var Color;
   Color[Color["YELLOW"] = 1] = "YELLOW";
   Color[Color["BLACK"] = 2] = "BLACK";
   Color[Color["BLUE"] = 3] = "BLUE";
-  Color[Color["GREEN"] = 4] = "GREEN"; // TODO :: ADD some colors 
+  Color[Color["WHITE"] = 4] = "WHITE";
+  Color[Color["GREEN"] = 5] = "GREEN"; // TODO :: ADD some colors here and in the function 
 })(Color = exports.Color || (exports.Color = {}));
-},{}],"../assets/ts/components/TODOElement.ts":[function(require,module,exports) {
+},{}],"../assets/ts/exeptions/WrongDateException.ts":[function(require,module,exports) {
+"use strict";
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var WrongDateException =
+/** @class */
+function (_super) {
+  __extends(WrongDateException, _super);
+
+  function WrongDateException(message) {
+    return _super.call(this, message) || this;
+  }
+
+  return WrongDateException;
+}(Error);
+
+exports["default"] = WrongDateException;
+},{}],"../assets/ts/utils/functions.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var enums_1 = require("../enums");
+var enums_1 = require("./enums");
+/**
+ * TODO :: Change this method to return a dead line to TOMORROW
+ */
+
+
+function getDefaultDeadLine() {
+  return new Date();
+}
+
+exports.getDefaultDeadLine = getDefaultDeadLine;
+
+function getColorFromString(color) {
+  color = color.toUpperCase();
+
+  switch (color) {
+    case "RED":
+      return enums_1.Color.RED;
+
+    case "BLUE":
+      return enums_1.Color.BLUE;
+
+    case "YELLOW":
+      return enums_1.Color.YELLOW;
+
+    case "BLACK":
+      return enums_1.Color.BLACK;
+
+    case "GREEN":
+      return enums_1.Color.GREEN;
+
+    case "WHITE":
+      return enums_1.Color.WHITE;
+
+    default:
+      return enums_1.Color.WHITE;
+  }
+}
+
+exports.getColorFromString = getColorFromString;
+
+function isValideDate(tDate) {
+  var now = new Date();
+  return tDate < now;
+}
+
+exports.isValideDate = isValideDate;
+},{"./enums":"../assets/ts/utils/enums.ts"}],"../assets/ts/components/TODOElement.ts":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var enums_1 = require("../utils/enums");
+
+var WrongDateException_1 = __importDefault(require("../exeptions/WrongDateException")); //* import to optimise after
+
+
+var functions_1 = require("../utils/functions");
 
 var TODOElement =
 /** @class */
 function () {
-  function TODOElement() {
-    this.color = enums_1.Color.RED;
+  function TODOElement(content, title, deadLine) {
+    if (content === void 0) {
+      content = "";
+    }
+
+    if (title === void 0) {
+      title = "";
+    }
+
+    this._content = content;
+    this._title = title;
+    this._deadline = deadLine !== undefined ? deadLine : functions_1.getDefaultDeadLine();
+    this._color = enums_1.Color.WHITE;
   }
+
+  Object.defineProperty(TODOElement.prototype, "content", {
+    get: function get() {
+      return this._content;
+    },
+    // TODO :: check this setter
+    set: function set(newContent) {
+      this.content = newContent;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TODOElement.prototype, "title", {
+    get: function get() {
+      return this._title;
+    },
+    // TODO :: check this setter
+    set: function set(newTitle) {
+      this._title = newTitle;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TODOElement.prototype, "color", {
+    get: function get() {
+      return this._color;
+    },
+    set: function set(newColor) {
+      this._color = newColor;
+    },
+    enumerable: true,
+    configurable: true
+  });
+
+  TODOElement.prototype.setColor = function (newColor) {
+    if (typeof newColor === "string") {
+      this._color = functions_1.getColorFromString(newColor);
+    } else {
+      this.color = newColor;
+    }
+  };
+
+  Object.defineProperty(TODOElement.prototype, "deadline", {
+    get: function get() {
+      return this._deadline;
+    },
+
+    /**
+     * This method throws WrongDateException
+     * TODO :: Check exceptions and dates
+     */
+    set: function set(newDate) {
+      if (functions_1.isValideDate(newDate)) {
+        this._deadline = newDate;
+      } else {
+        throw new WrongDateException_1["default"]("The date for the dead line is incorrect");
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  /**
+   *  This method must return the HTML code for a TODO ELEMENT
+   *  TODO :: Implement this Method
+   *  TODO :: Check if this Method should return string or HTML ELEMENT
+   *  TODO :: Check if I should add a method that render a TODO element for a list like in TRELLO
+   */
 
   TODOElement.prototype.render = function () {
     throw new Error("Method not implemented.");
@@ -156,7 +346,7 @@ function () {
 }();
 
 exports["default"] = TODOElement;
-},{"../enums":"../assets/ts/enums.ts"}],"../assets/ts/app.ts":[function(require,module,exports) {
+},{"../utils/enums":"../assets/ts/utils/enums.ts","../exeptions/WrongDateException":"../assets/ts/exeptions/WrongDateException.ts","../utils/functions":"../assets/ts/utils/functions.ts"}],"../assets/ts/app.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {

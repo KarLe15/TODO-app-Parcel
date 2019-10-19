@@ -3,6 +3,7 @@ export enum Color {
     YELLOW,
     BLACK,
     BLUE,
+    WHITE,
     GREEN
-    // TODO :: ADD some colors 
+    // TODO :: ADD some colors here and in the function 
 }
