@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@types/express": "^4.17.1",
+    "ejs": "^2.7.1",
     "express": "^4.17.1",
     "parcel-bundler": "^1.12.4"
   },
@@ -9,31 +10,29 @@
   "main": "index.js",
   "devDependencies": {
     "@babel/core": "^7.6.4",
+    "@types/ejs": "^2.6.3",
+    "@types/jest": "^24.0.20",
     "@types/node": "^12.11.7",
     "concurrently": "^5.0.0",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "parcel-plugin-bundle-manifest": "^0.2.0",
     "sass": "^1.23.0",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "devAssetsServer"    : "parcel assets/main.html assets/connexion.html assets/categories.html assets/todo.html",
-    "devServer"          : "parcel server/server.ts --target node --out-dir server/dist --out-file server.js",
-    "startServer"        : "nodemon server/dist/server.js",
-    
-    "front"           : "parcel assets/main.html assets/connexion.html assets/categories.html assets/todo.html --out-dir dev-front-dist",
-    "server"        : "concurrently \"npm run devAssetsServer\" \"npm run devServer\" \"npm run startServer\" ",
-
-    "clearAssets"   : "rm -rfv .cache/ && rm -rfv dist/*",
-    "clearServer"        : "rm -rfv .cache/ && rm -rfv server/dist/",
-    
-    "buildAssetsServer"  : "npm run clearAssets && parcel build assets/main.html assets/connexion.html assets/categories.html assets/todo.html --no-source-maps",
-    "buildServer"        : "npm run clearServer && npm run devServer",    
-
-    "build"      : "npm run buildAssetsServer && npm run buildServer",
-    
-    "test"       : "echo \"Error: no test specified\" && exit 1"
-
+    "devAssetsServer": "parcel assets/main.html assets/connexion.html assets/categories.html assets/todo.html",
+    "devServer": "parcel server/server.ts --target node --out-dir server/dist --out-file server.js",
+    "startServer": "nodemon server/dist/server.js",
+    "front": "parcel assets/main.html assets/connexion.html assets/categories.html assets/todo.html --out-dir dev-front-dist",
+    "server": "concurrently \"npm run devAssetsServer\" \"npm run devServer\"",
+    "clearAssets": "rm -rfv .cache/ && rm -rfv dist/*",
+    "clearServer": "rm -rfv .cache/ && rm -rfv server/dist/",
+    "buildAssetsServer": "npm run clearAssets && parcel build assets/main.html assets/connexion.html assets/categories.html assets/todo.html --no-source-maps",
+    "buildServer": "npm run clearServer && npm run devServer",
+    "build": "npm run buildAssetsServer && npm run buildServer",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
