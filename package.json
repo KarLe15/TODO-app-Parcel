@@ -1,23 +1,42 @@
 {
-    "dependencies": {
-      "parcel-bundler": "^1.12.4"
-    },
-    "name": "config-parcel",
-    "version": "1.0.0",
-    "main": "index.js",
-    "devDependencies": {
-      "@babel/core": "^7.6.4",
-      "sass": "^1.23.0",
-      "typescript": "^3.6.4"
-    },
-    "scripts": {
-      "dev": "parcel pages/index.html",
-      "build": "parcel build pages/index.html",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": ""
-  }
-  
+  "dependencies": {
+    "@types/express": "^4.17.1",
+    "express": "^4.17.1",
+    "parcel-bundler": "^1.12.4"
+  },
+  "name": "config-parcel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@types/node": "^12.11.7",
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4",
+    "parcel-plugin-bundle-manifest": "^0.2.0",
+    "sass": "^1.23.0",
+    "typescript": "^3.6.4"
+  },
+  "scripts": {
+    "devAssetsServer"    : "parcel assets/main.html assets/connexion.html assets/categories.html assets/todo.html",
+    "devServer"          : "parcel server/server.ts --target node --out-dir server/dist --out-file server.js",
+    "startServer"        : "nodemon server/dist/server.js",
+    
+    "front"           : "parcel assets/main.html assets/connexion.html assets/categories.html assets/todo.html --out-dir dev-front-dist",
+    "server"        : "concurrently \"npm run devAssetsServer\" \"npm run devServer\" \"npm run startServer\" ",
+
+    "clearAssets"   : "rm -rfv .cache/ && rm -rfv dist/*",
+    "clearServer"        : "rm -rfv .cache/ && rm -rfv server/dist/",
+    
+    "buildAssetsServer"  : "npm run clearAssets && parcel build assets/main.html assets/connexion.html assets/categories.html assets/todo.html --no-source-maps",
+    "buildServer"        : "npm run clearServer && npm run devServer",    
+
+    "build"      : "npm run buildAssetsServer && npm run buildServer",
+    
+    "test"       : "echo \"Error: no test specified\" && exit 1"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

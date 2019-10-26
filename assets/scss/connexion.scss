@@ -1,0 +1,59 @@
+@charset 'utf-8';
+
+@import "variables";
+@import "mixins";
+@import 'base';
+@import 'layout';
+@import 'component';
+
+body{
+    background-color: $main-color;
+}
+
+.title{
+    width: 70%;
+    margin: 18vh auto;
+    margin-bottom: 10vh;
+}
+
+.title * {
+    font-size: 5rem;
+    font-family: "Modak", cursive;
+    color: rgba($color: #000000, $alpha: 0.7);
+}
+.inputs_fields{
+    background-color : $secondary-color;
+    margin : 0 15px;
+    padding: 15px 0px;
+    border-radius: 25px;
+}
+
+.inputs_fields input{
+    display: block;
+    padding: 20px;
+    color: rgba($color: #000000, $alpha: 0.3);
+    width: calc(100% - 40px);
+    margin: 50px 20px ;
+    font-size: 2em;
+    background-color: $fields;
+}
+.inputs_fields input:first-child{
+    margin-top: 100px;
+}
+.inputs_fields input:last-child{
+    margin-bottom: 100px;
+}
+
+.submit_field{
+    display: flex;
+}
+
+.submit_field .submit{
+    font-size: 2.2em;
+    color: $white;
+    background-color: $accent-color;
+    flex: 1;
+    padding: 30px;
+    margin: 15px 120px;
+    
+}

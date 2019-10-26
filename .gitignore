@@ -1,2 +1,6 @@
 node_modules/**
 .cache/**
+dist/**
+dev-front-dist/**
+server/dist/**
+yarn.lock

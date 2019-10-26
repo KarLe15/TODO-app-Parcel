@@ -20,7 +20,9 @@
 <hr>
 <h3>TODOS</h3>
 <ul>
+    <li> Optimise the package.json !important </li>
     <li> Make a model of the site on Figma</li>
+    <li> Integrate font awsome \<\i class="fas fa-minus">\</\i\></li>
     <li> Integrate the maquette with SCSS</li>
     <li> Add categories</li>
     <li> Adding a test library like Jest or mocha</li>
@@ -37,5 +39,3 @@
 <ul>
     <li> Figma link : https://www.figma.com/file/7yUQknPcZSBbpzjkz5kDyb/TODO-App</li>
 </ul>
-
-
