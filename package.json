@@ -26,7 +26,7 @@
     "devServer": "parcel server/server.ts --target node --out-dir server/dist --out-file server.js",
     "startServer": "nodemon server/dist/server.js",
     "front": "parcel assets/main.html assets/connexion.html assets/categories.html assets/todo.html --out-dir dev-front-dist",
-    "server": "concurrently \"npm run devAssetsServer\" \"npm run devServer\"",
+    "server": "concurrently -k -n \"ParcelAssets,ParcelServer\" -p \"[{name}]\" -c \"blue,green\" \"npm run devAssetsServer\" \"npm run devServer\"",
     "clearAssets": "rm -rfv .cache/ && rm -rfv dist/*",
     "clearServer": "rm -rfv .cache/ && rm -rfv server/dist/",
     "buildAssetsServer": "npm run clearAssets && parcel build assets/main.html assets/connexion.html assets/categories.html assets/todo.html --no-source-maps",

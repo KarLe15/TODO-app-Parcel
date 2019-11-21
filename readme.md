@@ -20,12 +20,10 @@
 <hr>
 <h3>TODOS</h3>
 <ul>
-    <li> Optimise the package.json !important </li>
     <li> Make a model of the site on Figma</li>
-    <li> Integrate font awsome \<\i class="fas fa-minus">\</\i\></li>
+    <li> Integrate font awsome i class="fas fa-minus" i </li>
     <li> Integrate the maquette with SCSS</li>
     <li> Add categories</li>
-    <li> Adding a test library like Jest or mocha</li>
     <li> Adding some test with all methods of TODO ELEMENT</li>
     <li> Answer the issue in the repository about the DB this project should use</li>
     <li> Answer the issue in the repository about the back-end language to Use</li>

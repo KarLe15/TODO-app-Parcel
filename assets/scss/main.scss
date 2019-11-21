@@ -3,3 +3,116 @@
 @import 'base';
 @import 'layout';
 @import 'component';
+
+
+.container{
+  background-color: $secondary-color;
+}
+
+.header{
+  background-color: $main-color;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+
+  * {
+    font-size: 5rem;
+    font-family: "Modak", cursive;
+    color: rgba($color: #000000, $alpha: 0.7);
+
+
+  }
+}
+
+.sidebar {
+  background-color: $transparent;
+
+
+  .liste-sidebar {
+    width: 100%;
+    padding: 20px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+
+    .liste-item {
+      background-color: $accent-color;
+      width: calc(50% - 25px);
+      height: 100px;
+      margin-bottom: 15px;
+      display: flex;
+      color: $white;
+      text-align: center;
+
+
+      span {
+        margin: auto;
+        font-size: 1.6em;
+      }
+    }
+  }
+}
+
+.category-container{
+  .title-category {
+    * {
+      font-family: "Modak", cursive;
+      font-size: 2.4em;
+      padding: 10px 25px;
+      text-decoration: underline;
+
+    }
+  }
+
+
+}
+
+.todos-container{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+
+  .todo-card{
+    width: calc(50vw - 45px);
+    height: calc(50vw - 45px);
+    background-color: $main-color;
+    margin-right: 25px;
+    margin-bottom: 40px;
+    border-radius: 0 52px 0 42px;
+
+    .todo-title {
+      display: flex;
+      justify-content: center;
+      *{
+        font-family: "pacifico", serif;
+        font-size: 1.6em;
+        text-decoration: underline;
+      }
+      .check-todo{
+        flex: 1;
+        border: black solid 2px;
+        margin: 25px;
+        height: 25px;
+      }
+      
+    }
+
+    .todo-content{
+      max-height: 10.8em;
+      *{
+        display: block;
+        max-height: 10.8em;
+        font-family: "pacifico", serif;
+        margin: 25px;
+        line-height: 1.8;
+        overflow: hidden;
+        //text-overflow: ellipsis;
+      }
+    }
+
+  }
+}
